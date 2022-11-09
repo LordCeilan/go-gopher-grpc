@@ -1,0 +1,22 @@
+syntax = "proto3";
+package gopher;
+
+//Needed to generate code from golang
+//Must be provided for every .proto file
+option go_package = "github.com/LordCeilan/go-gopher-grpc";
+
+//The gopher service definition.enum
+service Gopher {
+    // Get gopher URL 
+    rpc GetGopher (GopherRequest) returns (GopherReply) {}
+}
+
+// The request message containing the user's name.
+message GopherRequest {
+    string name = 1;
+}
+
+// The response message containing the greetings
+message GopherReply {
+    string name = 1;
+}       
