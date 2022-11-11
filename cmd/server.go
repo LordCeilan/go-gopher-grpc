@@ -11,6 +11,7 @@ import (
 	"log"
 	"net"
 	"net/http"
+	"net/url"
 	"strings"
 
 	"github.com/spf13/cobra"
@@ -73,7 +74,16 @@ func (s *Server) GetGopher(ctx context.Context, req *pb.GopherRequest) (*pb.Goph
 
 	log.Printf("Received: %v", req.GetName())
 
-	response, err := http.Get(strings.TrimSpace(KuteGoAPIURL) + "/gophers?name=" + req.GetName())
+	parsedUrl, err := url.Parse("http://" + KuteGoAPIURL + "/gophers?name=" + req.GetName())
+
+	if err != nil {
+		log.Fatalf("url incorrect %v or not authorized", parsedUrl)
+	}
+
+	// fmt.Printf("%q", parsedUrl)
+	// fmt.Printf("%s", parsedUrl.String())
+
+	response, err := http.Get(parsedUrl.String())
 
 	if err != nil {
 		log.Fatalf("failed to call KuteGoAPI: %v", err)
