@@ -2,7 +2,7 @@
 // versions:
 // - protoc-gen-go-grpc v1.2.0
 // - protoc             v3.21.7
-// source: gopher.proto
+// source: pkg/gopher/gopher.proto
 
 package go_gopher_grpc
 
@@ -103,5 +103,5 @@ var Gopher_ServiceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: "gopher.proto",
+	Metadata: "pkg/gopher/gopher.proto",
 }

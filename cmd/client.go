@@ -10,6 +10,7 @@ import (
 	"time"
 
 	"google.golang.org/grpc"
+	"google.golang.org/grpc/credentials/insecure"
 
 	pb "github.com/LordCeilan/go-gopher-grpc/pkg/gopher"
 	"github.com/spf13/cobra"
@@ -22,7 +23,7 @@ var clientCmd = &cobra.Command{
 
 	Run: func(cmd *cobra.Command, args []string) {
 		var conn *grpc.ClientConn
-		conn, err := grpc.Dial(address, grpc.WithInsecure())
+		conn, err := grpc.Dial(address, grpc.WithTransportCredentials(insecure.NewCredentials()))
 
 		if err != nil {
 			log.Fatalf("did not connect: %s", err)
