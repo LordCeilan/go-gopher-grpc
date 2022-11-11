@@ -18,12 +18,11 @@ import (
 
 	pb "github.com/LordCeilan/go-gopher-grpc/pkg/gopher"
 	"google.golang.org/grpc"
-	"google.golang.org/protobuf/runtime/protoiface"
 )
 
 const (
 	port         = ":9000"
-	KuteGoAPIURL = "https://kutego-api-xxxxx-ew.a.run.app"
+	KuteGoAPIURL = "127.0.0.1:8080"
 )
 
 type Server struct {
@@ -74,7 +73,7 @@ func (s *Server) GetGopher(ctx context.Context, req *pb.GopherRequest) (*pb.Goph
 
 	log.Printf("Received: %v", req.GetName())
 
-	response, err := http.Get(KuteGoAPIURL + "/gophers?name=" + req.GetName())
+	response, err := http.Get(strings.TrimSpace(KuteGoAPIURL) + "/gophers?name=" + req.GetName())
 
 	if err != nil {
 		log.Fatalf("failed to call KuteGoAPI: %v", err)
@@ -100,9 +99,7 @@ func (s *Server) GetGopher(ctx context.Context, req *pb.GopherRequest) (*pb.Goph
 			gophers.WriteString(gopher.URL + "\n")
 		}
 
-		res.ProtoReflect().Descriptor().Messages()
-		res.ProtoReflect().ProtoMethods().Marshal = protoiface.MessageV1{}
-		// res.ProtoReflect().Mutable().Message().ProtoMethods()
+		res.Message = gophers.String()
 
 	} else {
 		log.Fatal("Can't get the Gopher :c")

@@ -1,7 +1,7 @@
-```# Gopher gRPC example
+# Gopher gRPC example
 
 In this project we will create a gRPC implementation with CLI application using cobra.
-
+08
 The propper order is to create a new project in the folder we will use.
 
 ```bash
@@ -20,7 +20,7 @@ in your C:/ folder if you are a Windows peasant as me and don't forget to includ
 
 Go plugins need to be also installed so use
 
-### Protoc
+## Protoc
 
 ```bash
 go install google.golang.org/protobuf/cmd/protoc-gen-go
@@ -165,20 +165,14 @@ message GopherReply {
 generate it's respective code from pkg/gopher file :
 
 ```bash
-protoc --proto_path=. *.proto --go-grpc_out=. --go-grpc_opt=paths=source_relative
+protoc --proto_path=. *.proto --go_out=. --go_opt=paths=source_relative --go-grpc_out=. --go-grpc_opt=paths=source_relative 
 ```
 
-it will create a `.pb.go` file with the name of the proto file selected. Remember to change the `*` symbol with the name if only want to create a single `pb.go`
+it will create a `pb.go` and a `gopher_grpc.pb.go` file with the name of the proto file selected. Remember to change the `*` symbol with the name if only want to create a single pair of `_grpc.pb.go` & `pb.go`
 
-`gopher.pb.go` will contain generated code that we'll import in our `server.go` file in order to register our gRPC server to `Gopher` service
+In our case`gopher.pb.go` & `gopher_grpc.pb.go` will contain generated code that we'll import in our `server.go` file in order to register our gRPC server to `Gopher` service
 
-to generate the go main file use the next code: 
-
-```bash
-protoc --proto_path=. *.proto --go_out=. --go_opt=paths=source_relative
-```
-
-the dependecies implemented in `.pg.go` are the ones used in the `.go` file.
+the dependecies implemented in `.pg.go` are the ones used in the `grpc.pb.go` file and then in the `.go` file.
 
 ## Server
 
