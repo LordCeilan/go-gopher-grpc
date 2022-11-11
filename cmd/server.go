@@ -18,6 +18,7 @@ import (
 
 	pb "github.com/LordCeilan/go-gopher-grpc/pkg/gopher"
 	"google.golang.org/grpc"
+	"google.golang.org/protobuf/runtime/protoiface"
 )
 
 const (
@@ -99,6 +100,8 @@ func (s *Server) GetGopher(ctx context.Context, req *pb.GopherRequest) (*pb.Goph
 			gophers.WriteString(gopher.URL + "\n")
 		}
 
+		res.ProtoReflect().Descriptor().Messages()
+		res.ProtoReflect().ProtoMethods().Marshal = protoiface.MessageV1{}
 		// res.ProtoReflect().Mutable().Message().ProtoMethods()
 
 	} else {
