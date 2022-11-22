@@ -1,18 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuites tests="0" failures="0" errors="0" time="7.922019">
-	<testsuite tests="0" failures="0" time="0.000000" name="github.com/LordCeilan/go-gopher-grpc" timestamp="2022-11-11T15:58:03-05:00">
+<testsuites tests="5" failures="0" errors="0" time="1.058145">
+	<testsuite tests="0" failures="0" time="0.000000" name="github.com/LordCeilan/go-gopher-grpc" timestamp="2022-11-22T15:40:44-05:00">
 		<properties>
-			<property name="go.version" value="go1.19.2 windows/amd64"></property>
+			<property name="go.version" value="go1.19.3 darwin/arm64"></property>
 		</properties>
 	</testsuite>
-	<testsuite tests="0" failures="0" time="0.000000" name="github.com/LordCeilan/go-gopher-grpc/cmd" timestamp="2022-11-11T15:58:03-05:00">
+	<testsuite tests="5" failures="0" time="0.534000" name="github.com/LordCeilan/go-gopher-grpc/cmd" timestamp="2022-11-22T15:40:44-05:00">
 		<properties>
-			<property name="go.version" value="go1.19.2 windows/amd64"></property>
+			<property name="go.version" value="go1.19.3 darwin/arm64"></property>
 		</properties>
+		<testcase classname="github.com/LordCeilan/go-gopher-grpc/cmd" name="TestGetGopher/req_with_empty_name" time="0.000000"></testcase>
+		<testcase classname="github.com/LordCeilan/go-gopher-grpc/cmd" name="TestGetGopher/nil_request" time="0.000000"></testcase>
+		<testcase classname="github.com/LordCeilan/go-gopher-grpc/cmd" name="TestGetGopher/req_ok" time="0.160000"></testcase>
+		<testcase classname="github.com/LordCeilan/go-gopher-grpc/cmd" name="TestGetGopher/Incorrect_request" time="0.170000"></testcase>
+		<testcase classname="github.com/LordCeilan/go-gopher-grpc/cmd" name="TestGetGopher" time="0.000000"></testcase>
 	</testsuite>
-	<testsuite tests="0" failures="0" time="0.000000" name="github.com/LordCeilan/go-gopher-grpc/pkg/gopher" timestamp="2022-11-11T15:58:03-05:00">
+	<testsuite tests="0" failures="0" time="0.000000" name="github.com/LordCeilan/go-gopher-grpc/pkg/gopher" timestamp="2022-11-22T15:40:44-05:00">
 		<properties>
-			<property name="go.version" value="go1.19.2 windows/amd64"></property>
+			<property name="go.version" value="go1.19.3 darwin/arm64"></property>
 		</properties>
 	</testsuite>
 </testsuites>

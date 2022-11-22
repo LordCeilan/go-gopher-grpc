@@ -34,14 +34,11 @@ type Gopher struct {
 	URL string `json: "url"`
 }
 
-// serverCmd represents the server command
 var serverCmd = &cobra.Command{
 	Use:   "server",
 	Short: "Starts the Schema gRPC server",
-	// 	Long:
-	// Cobra is a CLI library for Go that empowers applications.
-	// This application is a tool to generate the needed files
-	// to quickly create a Cobra application.`,
+	Long: `Instances a server with cobra and create a gRPC connection to the
+	Proto file gRPC server.`,
 	Run: func(cmd *cobra.Command, args []string) {
 		lis, err := net.Listen("tcp", port)
 		if err != nil {
@@ -130,7 +127,3 @@ func init() {
 	// is called directly, e.g.:
 	// serverCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
 }
-
-// func (s *Server) GetGopher(ctx context.Context, req *pb.GopherRequest) {
-
-// }
